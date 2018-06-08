@@ -18,7 +18,9 @@ This package uses **Android** or **iOS access_token**. To get it, follow these i
 ### How to use
 
 For example you have a page with id = `182794865548469`, and your Android token is `EAAAAUaZA8jlABAIv...`
+
 Firstly, you must setup the package like this:
+
 ```js
 const FbidToPsid = require('fbid-to-psid');
 FbidToPsid.init("182794865548469",
@@ -40,6 +42,7 @@ After that, you can use these functions:
 ### getFromWebhookEvent(messaging_event)
 
 Get fbid from messaging_event of webhook
+
 This **does NOT work** with postback from buttons / Get Started button
 
 __Arguments__
@@ -68,6 +71,7 @@ app.post('/webhook/', function (req, res) {
 ### getFromMid(mid, psid)
 
 Get fbid from mid (message_id)
+
 For example, each time you send a message via `/me/messages` endpoint, you receive an object which contains `message_id`. The `message_id` can then be passed into getFromMid to get fbid of the receiver.
 
 __Arguments__
