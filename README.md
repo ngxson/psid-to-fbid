@@ -1,6 +1,7 @@
 ### Mapping PSID to FBID
 
 This package allows you to match page-specific id (psid) with user's real id (id starts with 1000...) from webhook events.
+
 **Requirement:** You must have **admin** or **editor** role on that page.
 
 <a name="getstarted"></a>
@@ -8,6 +9,7 @@ This package allows you to match page-specific id (psid) with user's real id (id
 ### Getting started
 
 This package uses **Android** or **iOS access_token**. To get it, follow these instructions:
+
 * Login to your facebook account on a browser (on PC)
 * Go to your profile page (https://facebook.com/profile.php)
 * View HTML source code (Ctrl+U in Chrome)
