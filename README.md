@@ -29,8 +29,8 @@ For example you have a page with id = `182794865548469`, and your Android token 
 Firstly, you must setup the package like this:
 
 ```js
-const FbidToPsid = require('fbid-to-psid');
-FbidToPsid.init("182794865548469",
+const PsidToFbid = require('psid-to-fbid');
+PsidToFbid.init("182794865548469",
         "EAAAAUaZA8jlABAIv...",
         {cache_enable: true})
 .then(() => {
@@ -65,7 +65,7 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i];
 		let psid = event.sender.id;
-		FbidToPsid.getFromWebhookEvent(event).then(fbid => {
+		PsidToFbid.getFromWebhookEvent(event).then(fbid => {
 		    console.log("Got psid = "+psid+", fbid = "+fbid);
 		})
 	}
@@ -101,7 +101,7 @@ request({
 }, function(error, response, body) {
 	if (!error && !response.body.error && response.body.message_id) {
 	    var mid = response.body.message_id;
-		FbidToPsid.getFromMid(mid, psid).then(fbid => {
+		PsidToFbid.getFromMid(mid, psid).then(fbid => {
 		    console.log("Got psid = "+psid+", fbid = "+fbid);
 		})
 	}
