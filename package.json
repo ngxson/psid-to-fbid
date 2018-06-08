@@ -1,0 +1,29 @@
+{
+  "name": "psid-to-fbid",
+  "version": "1.0.0",
+  "description": "Get/map psid to fbid using Facebook messenger's webhook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngxson/psid-to-fbid.git"
+  },
+  "keywords": [
+    "facebook",
+    "messenger",
+    "chatbot",
+    "psid"
+  ],
+  "author": "ngxson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngxson/psid-to-fbid/issues"
+  },
+  "homepage": "https://github.com/ngxson/psid-to-fbid#readme",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "request": "^2.87.0"
+  }
+}
