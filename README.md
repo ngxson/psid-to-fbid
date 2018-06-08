@@ -3,6 +3,7 @@
 This package allows you to match page-specific id (psid) with user's real id (id starts with 1000...) from webhook events.
 **Requirement:** You must have **admin** or **editor** role on that page.
 
+<a name="getstarted"></a>
 ---------------------------------------
 ### Getting started
 
@@ -43,7 +44,7 @@ After that, you can use these functions:
 
 Get fbid from messaging_event of webhook
 
-This **does NOT work** with postback from buttons / Get Started button
+This **does NOT work** with postback from buttons / Get Started button (but works with quick replies)
 
 __Arguments__
 

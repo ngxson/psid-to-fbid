@@ -28,6 +28,8 @@ function init(page_id, access_token, options) {
             method: 'GET'
         }, function(error, response, body) {
             if (error) {
+                console.error("Cannot find page. Please check your page_id and access_token");
+                console.error("Make sure you are using Android or iOS access_token, read guide here: https://github.com/ngxson/psid-to-fbid#getstarted");
                 console.error(error);
                 reject();
             } else {
@@ -41,7 +43,7 @@ function init(page_id, access_token, options) {
                     resolve();
                 } else {
                     console.error("Cannot find page. Please check your page_id and access_token");
-                    console.error("access_token must be taken from source code of fb.com/profile.php (Ctrl+U in Chrome to view source code, then Ctrl+F to find token starts with EAAA)");
+                    console.error("Make sure you are using Android or iOS access_token, read guide here: https://github.com/ngxson/psid-to-fbid#getstarted");
                     reject();
                 }
             }
