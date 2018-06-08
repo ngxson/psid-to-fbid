@@ -20,6 +20,10 @@ This package uses **Android** or **iOS access_token**. To get it, follow these i
 ---------------------------------------
 ### How to use
 
+```
+npm install psid-to-fbid --save
+```
+
 For example you have a page with id = `182794865548469`, and your Android token is `EAAAAUaZA8jlABAIv...`
 
 Firstly, you must setup the package like this:
