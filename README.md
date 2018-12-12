@@ -30,9 +30,8 @@ Firstly, you must setup the package like this:
 
 ```js
 const PsidToFbid = require('psid-to-fbid');
-PsidToFbid.init("182794865548469",
-        "EAAAAUaZA8jlABAIv...",
-        {cache_enable: true})
+const psidToFbid = new PsidToFbid("182794865548469",
+        "EAAAAUaZA8jlABAIv...")
 .then(() => {
     console.log("Setup complete");
 }).catch(() => {
@@ -65,7 +64,7 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i];
 		let psid = event.sender.id;
-		PsidToFbid.getFromWebhookEvent(event).then(fbid => {
+		psidToFbid.getFromWebhookEvent(event).then(fbid => {
 		    console.log("Got psid = "+psid+", fbid = "+fbid);
 		})
 	}
@@ -101,7 +100,7 @@ request({
 }, function(error, response, body) {
 	if (!error && !response.body.error && response.body.message_id) {
 	    var mid = response.body.message_id;
-		PsidToFbid.getFromMid(mid, psid).then(fbid => {
+		psidToFbid.getFromMid(mid, psid).then(fbid => {
 		    console.log("Got psid = "+psid+", fbid = "+fbid);
 		})
 	}
@@ -111,4 +110,5 @@ request({
 ---------------------------------------
 ### Author
 * ngxson (Nui Nguyen)
+* Email: contact at ngxson dot com
 * My website: https://ngxson.com

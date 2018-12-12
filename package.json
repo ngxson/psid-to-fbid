@@ -1,6 +1,6 @@
 {
   "name": "psid-to-fbid",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Get/map psid to fbid using Facebook messenger's webhook",
   "main": "index.js",
   "scripts": {
