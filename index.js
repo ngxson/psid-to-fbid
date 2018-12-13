@@ -92,7 +92,7 @@ class PsidToFbid {
 				return resolve(self.state.cache[psid]);
 			}
 
-			getFromMid(mid, psid).then((fbid) => {
+			self.getFromMid(mid, psid).then((fbid) => {
 				resolve(fbid);
 			}).catch(() => {
 				reject();
