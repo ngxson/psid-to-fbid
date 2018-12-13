@@ -30,13 +30,13 @@ Firstly, you must setup the package like this:
 
 ```js
 const PsidToFbid = require('psid-to-fbid');
-const psidToFbid = new PsidToFbid("182794865548469",
-        "EAAAAUaZA8jlABAIv...")
-.then(() => {
-    console.log("Setup complete");
-}).catch(() => {
-    console.log("Setup failed");
-})
+const psidToFbid = new PsidToFbid("182794865548469")
+psidToFbid.fetchPageToken("EAAAAUaZA8jlABAIv...")
+	.then((page_token) => {
+	    console.log("Setup complete", page_token);
+	}).catch(() => {
+	    console.log("Setup failed");
+	})
 ```
 
 After that, you can use these functions:

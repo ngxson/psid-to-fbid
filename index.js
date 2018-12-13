@@ -4,24 +4,28 @@ const ERR_NO_PAGE_TOKEN = "Cannot find page_token, make sure that you've use ini
 
 class PsidToFbid {
 	/**
-	 * Setup function
+	 * Constructor
 	 *
 	 * @param {String} page_id The array to iterate over.
-	 * @param {String} access_token Android or iOS access_token.
-	 * @param {String} [options.page_token] Page's token (optional). If it is included, then the package will use this token instead of access_token
-	 * @param {Boolean} [options.cache_enable] Enable cache? Default is true
-	 * @returns {Promise} Returns Promise resolve() if success.
+	 * @param {String} [options.page_token] Page's token (optional). If it is included, you won't have to use fetchPageToken().
+	 * @param {Boolean} [options.cache_enable] Enable cache? Default is true.
 	 */
-	constructor(page_id, access_token, options) {
+	constructor(page_id, options) {
 		this.initState();
-		var self = this;
-		self.state.page_id = page_id;
+		this.state.page_id = page_id;
 		if (options)
-			_.merge(self.state, options);
-		if (options.page_token) {
-			return Promise.resolve()
-		}
-		return new Promise((resolve, reject) => {
+			_.merge(this.state, options);
+    }
+    
+    /**
+	 * Fetch and save page_token
+	 *
+	 * @param {String} access_token Android or iOS access_token.
+	 * @returns {Promise} Returns Promise resolve(page_token) if success.
+	 */
+    fetchPageToken(access_token) {
+        var self = this;
+        return new Promise((resolve, reject) => {
 			request({
 				url: 'https://graph.facebook.com/me/accounts',
 				qs: {
@@ -42,7 +46,7 @@ class PsidToFbid {
 						}
 					});
 					if (self.state.page_token) {
-						resolve();
+						resolve(self.state.page_token);
 					} else {
 						console.error("Cannot find page. Please check your page_id and access_token");
 						console.error("Make sure you are using Android or iOS access_token, read guide here: https://github.com/ngxson/psid-to-fbid#getstarted");
@@ -51,7 +55,7 @@ class PsidToFbid {
 				}
 			})
 		})
-	}
+    }
 
 	initState() {
 		this.state = {
