@@ -41,7 +41,7 @@ class PsidToFbid {
 				} else {
 					var data = JSON.parse(body);
 					data.data.forEach(page => {
-						if (page.id == page_id) {
+						if (page.id == self.state.page_id) {
 							self.state.page_token = page.access_token;
 						}
 					});
@@ -161,6 +161,21 @@ class PsidToFbid {
 				}
 			})
 		})
+	}
+
+	/**
+	 * Generate Login URL to obtain the iOS's access_token
+	 * WARNING: This should be done only once, on client side to prevent checkpoint from facebook
+	 *
+	 * @param {String} email Your email / phone number / username on facebook.
+	 * @param {String} psid Your facebook's password.
+	 * @returns {String} An URL to be accessed on a browser.
+	 */
+	static genLoginURLiOS(email, pass) {
+		var crypto = require('crypto');
+		var sig_content = "api_key=3e7c78e35a76a9299309885393b02d97email="+email+"format=JSONgenerate_session_cookies=1locale=en_usmethod=auth.loginpassword="+pass+"return_ssl_resources=0v=1.0c1e620fa708a1d5696fb991c1bde5662";
+		var sig = crypto.createHash('md5').update(sig_content).digest('hex');
+		return "https://api.facebook.com/restserver.php?api_key=3e7c78e35a76a9299309885393b02d97&email="+encodeURIComponent(email)+"&format=JSON&generate_session_cookies=1&locale=en_us&method=auth.login&password="+encodeURIComponent(pass)+"&return_ssl_resources=0&v=1.0&sig=" + sig;
 	}
 }
 

@@ -8,14 +8,20 @@ This package allows you to match page-specific id (psid) with user's real id (id
 ---------------------------------------
 ### Getting started
 
-This package uses **Android** or **iOS access_token**. To get it, follow these instructions:
+This package uses **Android** or **iOS access_token**. You can generate one by using this code:
 
-* Login to your facebook account on a browser (on PC)
-* Go to your profile page (https://facebook.com/profile.php)
-* View HTML source code (Ctrl+U in Chrome)
-* Press Ctrl+F to find on that page
-* Type in the search box `EAAA`
-* Get the access_token which starts with `EAAA`...
+```js
+const PsidToFbid = require('psid-to-fbid');
+const email = "myemail@ngxson.com";
+const password = "this_is_my_facebook_password"
+console.log(PsidToFbid.genLoginURLiOS(email, password));
+```
+
+The code will print out an URL. You must access this URL using a browser, **on client side**, in order to prevent being locked down your facebook account.
+
+The code will return some JSON stuffs. Just find the pattern starts with `EAAA...`. That's your access_token.
+
+This action should be done every time you change your password, since facebook will invalidate all your access_tokens.
 
 ---------------------------------------
 ### How to use
